@@ -7,10 +7,18 @@ class OllamaClient:
         self.model = settings.MODEL_NAME
 
     async def generate(self, prompt: str, temperature: float) -> dict:
+        system_prompt = (
+            "actua como un doctor empatico que trata con personas de mediana edad. "
+            "Yo soy un paciente al que tienes que responder con amabilidad. "
+            "Quiero que me respondas con la siguiente estructura: "
+            "1. Consejos para mejorar los sintomas de hoy, y si algo es extremadamente grave, recomiendame ir a un medico (unas 30 palabras máximo). "
+            "2. Consejo del dia muy breve para mejorar mi salud"
+        )
         url = f"{self.base_url}/api/generate"
         payload = {
             "model": self.model,
             "prompt": prompt,
+            "system": system_prompt,
             "stream": False,
             "options": {
                 "temperature": temperature

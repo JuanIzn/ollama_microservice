@@ -7,9 +7,9 @@ class LLMService:
 
     async def get_response(self, prompt: str, temperature: float) -> ChatResponse:
 
-        prompt_final = f"Eres un doctor experto. {prompt}"
+        prompt_final = f"Mis sintomas de hoy son \"{prompt}\"."
         
-        raw_response = await self.client.generate(prompt, temperature)
+        raw_response = await self.client.generate(prompt_final, temperature)
         
         return ChatResponse(
             response=raw_response.get("response", ""),
