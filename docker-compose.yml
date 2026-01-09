@@ -1,16 +1,16 @@
 services:
-  # --- SERVICIO 1: MOTOR DE IA (OLLAMA) ---
+  # --- OLLAMA LA LLAMA ---
   ollama-engine:
     image: ollama/ollama:latest
     container_name: ollama_engine
     volumes:
       - ollama_storage:/root/.ollama
-    # Script para iniciar el servidor, esperar a que levante y descargar el modelo automáticamente
+    #  iniciar el server
     entrypoint: /bin/sh
     command: -c "/bin/ollama serve & pid=$$!; sleep 5; echo '🔴 Descargando modelo llama3...'; ollama pull llama3; echo '🟢 Modelo listo!'; wait $$pid"
     ports:
-      - "11434:11434" # Expuesto a localhost para pruebas
-    deploy: # Descomentar si se tiene GPU NVIDIA configurada correctamente en Docker
+      - "11434:11434" # localhost 
+    deploy: #  GPU NVIDIA
      resources:
        reservations:
          devices:
@@ -21,7 +21,7 @@ services:
       - ai_network
     restart: always
 
-  # --- SERVICIO 2: TU API FASTAPI ---
+  # --- API FASTAPI xd---
   fastapi-app:
     build: .
     container_name: fastapi_gateway

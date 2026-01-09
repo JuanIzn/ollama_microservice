@@ -6,8 +6,8 @@ class LLMService:
         self.client = client or OllamaClient()
 
     async def get_response(self, prompt: str, temperature: float) -> ChatResponse:
-        # Aquí podrías añadir un "System Prompt" implícito si quisieras
-        # prompt_final = f"Eres un experto universitario. {prompt}"
+
+        prompt_final = f"Eres un doctor experto. {prompt}"
         
         raw_response = await self.client.generate(prompt, temperature)
         
