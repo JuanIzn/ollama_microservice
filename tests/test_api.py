@@ -23,11 +23,9 @@ async def test_health_check():
 
 @pytest.mark.asyncio
 async def test_chat_endpoint_valid_key():
-    # Override dependency
-    app.dependency_overrides[LLMService] = lambda: MockLLMService() # Note: The dependency in router is get_llm_service, let's check how to override it correctly.
-    # Actually, dependency_overrides uses the function object as key.
-    # In chat_router.py: async def chat(..., service: LLMService = Depends(get_llm_service))
-    # So we should override get_llm_service.
+
+    app.dependency_overrides[LLMService] = lambda: MockLLMService() 
+
     
     from app.api.v1.chat_router import get_llm_service
     app.dependency_overrides[get_llm_service] = lambda: MockLLMService()
