@@ -7,7 +7,7 @@ services:
       - ollama_storage:/root/.ollama
     #  iniciar el server
     entrypoint: /bin/sh
-    command: -c "/bin/ollama serve & pid=$$!; sleep 5; echo '🔴 Descargando modelo llama3...'; ollama pull llama3; echo '🟢 Modelo listo!'; wait $$pid"
+    command: -c "/bin/ollama serve & pid=$$!; sleep 5; echo '🔴 Downloading llama3...'; ollama pull llama3; echo '🟢 Ready!'; wait $$pid"
     ports:
       - "11434:11434" # localhost 
     deploy: #  GPU NVIDIA
