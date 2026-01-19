@@ -1,8 +1,8 @@
-# Ollama MicroService
+# ⚙️ Ollama MicroService
 
 A high-performance, containerized API gateway built with **FastAPI** that wraps the **Ollama** engine. This service provides a structured, secure, and production-ready interface for interacting with Large Language Models (LLMs) like Llama 3.
 
-## Key Features
+## 🔑 Key Features
 
 - **FastAPI Framework**: High performance, and automatically generated OpenAPI documentation.
 - **Ollama Integration**: Seamless connection to the Ollama engine for local LLM execution.
@@ -27,7 +27,7 @@ The system consists of two main components orchestrated by Docker Compose:
 - [Docker](https://docs.docker.com/get-docker/) and [Docker Compose](https://docs.docker.com/compose/install/)
 - [NVIDIA Container Toolkit](https://docs.nvidia.com/datacenter/cloud-native/container-toolkit/install-guide.html) (if needed)
 
-### Configuration
+### ⚙️ Configuration
 
 Create a `.env` file in the root directory with the following the .env.example variables.
 
@@ -75,7 +75,4 @@ curl -X POST http://localhost:8000/api/v1/chat \
 Once the service is running, you can access the interactive Swagger UI at:
 - [http://localhost:8000/docs](http://localhost:8000/docs)
 
-## 🧪 Running Tests
-
-The project uses `pytest` for automated testing. To run tests locally:
 
